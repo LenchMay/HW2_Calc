@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/operand_first" />
 
     <Button
-        android:id="@+id/btn_plus"
+        android:id="@+id/button_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -43,31 +43,31 @@
         app:layout_constraintTop_toBottomOf="@+id/operand_second" />
 
     <Button
-        android:id="@+id/btn_minus"
+        android:id="@+id/button_minus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/minus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_plus" />
+        app:layout_constraintTop_toBottomOf="@+id/button_plus" />
 
     <Button
-        android:id="@+id/btn_multi"
+        android:id="@+id/button_multiplication"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/multiplication"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_minus" />
+        app:layout_constraintTop_toBottomOf="@+id/button_minus" />
 
     <Button
-        android:id="@+id/btn_div"
+        android:id="@+id/button_division"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/division"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_multi" />
+        app:layout_constraintTop_toBottomOf="@+id/button_multiplication" />
 
     <TextView
         android:id="@+id/result_text"
@@ -78,10 +78,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_div" />
+        app:layout_constraintTop_toBottomOf="@+id/button_division" />
 
     <Button
-        android:id="@+id/btn_about"
+        android:id="@+id/button_about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"

@@ -9,4 +9,6 @@
     <string name="hint_operand1">Операнд 1</string>
     <string name="hint_operand2">Операнд 2</string>
     <string name="call_of_the_fox">Фыр-фыр-фыр</string>
+    <string name="division_by_zero">На ноль делить нельзя!</string>
+    <string name="empty_warning">Один из операндов пустой!</string>
 </resources>

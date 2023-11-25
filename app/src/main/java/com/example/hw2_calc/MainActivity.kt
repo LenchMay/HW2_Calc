@@ -10,9 +10,8 @@ import com.example.hw2_calc.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private var operand1: Double = 0.0
-    private var operand2: Double = 0.0
-    private var operator: String = ""
+    private var firstOperand = 0.0
+    private var secondOperand= 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,19 +20,19 @@ class MainActivity : AppCompatActivity() {
 
         with(binding) {
 
-            btnPlus.setOnClickListener{
-                operatorBtnClick(getString(R.string.plus))
+            buttonPlus.setOnClickListener{
+                onOperatorButtonClick(PLUS)
             }
-            btnMinus.setOnClickListener{
-                operatorBtnClick(getString(R.string.minus))
+            buttonMinus.setOnClickListener{
+                onOperatorButtonClick(MINUS)
             }
-            btnMulti.setOnClickListener{
-                operatorBtnClick(getString(R.string.multiplication))
+            buttonMultiplication.setOnClickListener{
+                onOperatorButtonClick(MULTIPLICATION)
             }
-            btnDiv.setOnClickListener{
-                operatorBtnClick(getString(R.string.division))
+            buttonDivision.setOnClickListener{
+                onOperatorButtonClick(DIVISION)
             }
-            btnAbout.setOnClickListener{
+            buttonAbout.setOnClickListener{
                 val intent = Intent(this@MainActivity, AboutActivity::class.java)
                 startActivity(intent)
             }
@@ -50,27 +49,32 @@ class MainActivity : AppCompatActivity() {
         binding.resultText.text = savedInstanceState.getString(RESULT_BUNDLE_KEY) ?: "null"
     }
 
-    private fun operatorBtnClick(clickedOperator: String) {
-        operator = clickedOperator
+    private fun onOperatorButtonClick(clickedOperator: String) {
         with(binding){
-            val operand1Str = operandFirst.text.toString()
-            val operand2Str = operandSecond.text.toString()
+            val firstOperandString = operandFirst.text.toString()
+            val secondOperandString = operandSecond.text.toString()
+            var resultString = ""
 
-            if(operand1Str.isNotEmpty() && operand2Str.isNotEmpty()) {
-                operand1 = operand1Str.toDouble()
-                operand2 = operand2Str.toDouble()
-                val result = when (operator) {
-                    getString(R.string.plus) -> operand1 + operand2
-                    getString(R.string.minus) -> operand1 - operand2
-                    getString(R.string.multiplication) -> operand1 * operand2
-                    getString(R.string.division) -> if (operand2 != 0.0) operand1 / operand2 else Double.NaN
-                    else -> Double.NaN
+            if(firstOperandString.isNotEmpty() && secondOperandString.isNotEmpty()) {
+                firstOperand =firstOperandString.toDouble()
+                secondOperand = secondOperandString.toDouble()
+                val result = when (clickedOperator) {
+                    PLUS -> firstOperand + secondOperand
+                    MINUS -> firstOperand - secondOperand
+                    MULTIPLICATION -> firstOperand * secondOperand
+                    DIVISION -> if (secondOperand != 0.0) firstOperand / secondOperand
+                    else {
+                        resultText.text = getString(R.string.division_by_zero)
+                        return
+                    }
+                    else -> {
+                        resultString = ""
+                        return
+                    }
                 }
-                val resultFormat = getString(R.string.result_format)
-                val resultStr = String.format(resultFormat, operand1, operator, operand2, result)
-                resultText.text = resultStr
+                resultText.text = getString(R.string.result_format, firstOperand.toString(), clickedOperator, secondOperand.toString(), result.toString())
             } else {
-                resultText.text = ""
+                resultText.text = getString(R.string.empty_warning)
             }
         }
 
@@ -78,5 +82,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         const val RESULT_BUNDLE_KEY = "result"
+        const val PLUS = "+"
+        const val MINUS = "-"
+        const val MULTIPLICATION = "*"
+        const val DIVISION = "/"
     }
 }
