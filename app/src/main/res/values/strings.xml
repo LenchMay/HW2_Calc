@@ -5,4 +5,5 @@
     <string name="multiplication">*</string>
     <string name="division">/</string>
     <string name="btn_open_about">О приложении</string>
+    <string name="result_format">Результат: %s %s %s = %s</string>
 </resources>
