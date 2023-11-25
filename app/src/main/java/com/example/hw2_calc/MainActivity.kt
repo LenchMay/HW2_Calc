@@ -3,6 +3,8 @@ package com.example.hw2_calc
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
+import androidx.core.os.bundleOf
 import com.example.hw2_calc.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +40,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(RESULT_BUNDLE_KEY, binding.resultText.text.toString())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        binding.resultText.text = savedInstanceState.getString(RESULT_BUNDLE_KEY) ?: "null"
+    }
+
     private fun operatorBtnClick(clickedOperator: String) {
         operator = clickedOperator
         with(binding){
@@ -64,5 +76,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    companion object{
+        const val RESULT_BUNDLE_KEY = "result"
+    }
 }
