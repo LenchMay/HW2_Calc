@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">HW2_Calc</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiplication">*</string>
+    <string name="division">/</string>
+    <string name="btn_open_about">О приложении</string>
+    <string name="result_format">Результат: %s %s %s = %s</string>
+    <string name="hint_operand1">Операнд 1</string>
+    <string name="hint_operand2">Операнд 2</string>
+    <string name="call_of_the_fox">Фыр-фыр-фыр</string>
+    <string name="division_by_zero">На ноль делить нельзя!</string>
+    <string name="empty_warning">Один из операндов пустой!</string>
 </resources>
